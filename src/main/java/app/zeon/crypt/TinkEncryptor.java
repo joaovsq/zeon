@@ -40,7 +40,5 @@ public class TinkEncryptor implements Encryptor {
         return new String(this.aead.decrypt(cipher, key.getBytes(UTF_8)), UTF_8);
     }
 
-    /* PRIVATE METHODS */
-
 
 }

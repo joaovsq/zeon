@@ -19,15 +19,25 @@ repositories {
     mavenCentral()
 }
 
+// TODO: review dependencies
 dependencies {
+    // Zeon Dependencies
     implementation('com.google.protobuf:protobuf-java-util:3.6.1')
-    implementation('com.google.guava:guava:27.0.1-jre')
     implementation('com.google.crypto.tink:tink:1.2.2')
+//    implementation('com.google.guava:guava:27.0.1-jre')
+//    implementation('com.google.inject:guice:4.1.0')
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.10.0'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.10.0'
 
+    // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+
+    // jmh
     jmhCompile project
     jmhCompile 'org.openjdk.jmh:jmh-core:1.14.1'
     jmhCompile 'org.openjdk.jmh:jmh-generator-annprocess:1.14.1'
+
+    // tests
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
@@ -36,6 +46,12 @@ compileKotlin {
 }
 compileTestKotlin {
     kotlinOptions.jvmTarget = "1.8"
+}
+
+task run(type: JavaExec) {
+  classpath sourceSets.main.runtimeClasspath
+  main = "app.zeon.Zeon"
+//  args "arg1", "arg2"
 }
 
 // jmh benchmark
@@ -49,31 +65,31 @@ task jmh(type: JavaExec, description: 'Executing JMH benchmarks') {
     def format = project.properties.get('format', 'json');
     def profilers = project.properties.get('profilers');
     def jvmArgs = project.properties.get('jvmArgs')
-    def verify =  project.properties.get('verify');
+    def verify = project.properties.get('verify');
 
     def resultFile = file("build/reports/jmh/result.${format}")
 
     args include
-    if(exclude) {
+    if (exclude) {
         args '-e', exclude
     }
-    if(verify != null) { // execute benchmarks with the minimum amount of execution (only to check if they are working)
+    if (verify != null) { // execute benchmarks with the minimum amount of execution (only to check if they are working)
         println "≥≥ Running in verify mode"
-        args '-f' , 1
-        args '-wi' , 1
-        args '-i' , 1
+        args '-f', 1
+        args '-wi', 1
+        args '-i', 1
     }
     args '-foe', 'true'   //fail-on-error
     args '-v', 'NORMAL'   //verbosity [SILENT, NORMAL, EXTRA]
-    if(profilers) {
+    if (profilers) {
         profilers.split(',').each {
             args '-prof', it
         }
     }
     args '-jvmArgsPrepend', '-Xmx3072m'
     args '-jvmArgsPrepend', '-Xms3072m'
-    if(jvmArgs) {
-        for(jvmArg in jvmArgs.split(' ')) {
+    if (jvmArgs) {
+        for (jvmArg in jvmArgs.split(' ')) {
             args '-jvmArgsPrepend', jvmArg
         }
     }
