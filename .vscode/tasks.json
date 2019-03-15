@@ -1,0 +1,51 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "start cmd /k build",
+            "type": "shell",
+            "command": "gradle",
+            "args": [
+                "build"
+            ],
+            "group": "build",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "start cmd /k gradle",
+            "args": [
+                "run"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "gradle",
+            "args": [
+                "clean"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "start cmd /k clean build",
+            "type": "shell",
+            "command": "gradle",
+            "args": [
+                "clean build"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        }
+    ]
+}
