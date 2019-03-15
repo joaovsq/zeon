@@ -4,8 +4,8 @@ out/
 bin/
 .idea/
 .gradle/
-.vscode/
 !.vscode/tasks.json
+.vscode/
 .settings/
 .project
 .classpath
