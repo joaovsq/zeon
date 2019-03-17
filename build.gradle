@@ -63,6 +63,7 @@ compileTestKotlin {
 task run(type: JavaExec) {
   classpath sourceSets.main.runtimeClasspath
   main = "app.zeon.Zeon"
+  args "-server"
 //  args "arg1", "arg2"
 }
 
