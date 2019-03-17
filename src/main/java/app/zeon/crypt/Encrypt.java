@@ -1,6 +1,6 @@
 package app.zeon.crypt;
 
-public interface Encryptor {
+public interface Encrypt {
 
     byte[] encrypt(String payload, String key) throws Exception;
 

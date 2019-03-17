@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "start cmd /k build",
+            "label": "build",
             "type": "shell",
-            "command": "gradle",
+            "command": "start cmd /k gradle",
             "args": [
                 "build"
             ],
@@ -24,8 +24,7 @@
             "args": [
                 "run"
             ],
-            "group": "build",
-            "problemMatcher": []
+            "group": "build"
         },
         {
             "label": "clean",
@@ -34,13 +33,12 @@
             "args": [
                 "clean"
             ],
-            "group": "build",
-            "problemMatcher": []
+            "group": "build"
         },
         {
-            "label": "start cmd /k clean build",
+            "label": "clean build",
             "type": "shell",
-            "command": "gradle",
+            "command": "start cmd /k gradle",
             "args": [
                 "clean build"
             ],

@@ -13,11 +13,11 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 /**
  * A preconfigured wrapper around Google's Tink library
  */
-public class TinkEncryptor implements Encryptor {
+public class TinkEncrypt implements Encrypt {
 
     private Aead aead;
 
-    public TinkEncryptor() throws GeneralSecurityException {
+    public TinkEncrypt() throws GeneralSecurityException {
         AeadConfig.register();
 
         KeysetHandle keysetHandle = KeysetHandle.generateNew(AeadKeyTemplates.AES128_CTR_HMAC_SHA256);
@@ -39,6 +39,5 @@ public class TinkEncryptor implements Encryptor {
     public String decrypt(byte[] cipher, String key) throws GeneralSecurityException {
         return new String(this.aead.decrypt(cipher, key.getBytes(UTF_8)), UTF_8);
     }
-
 
 }

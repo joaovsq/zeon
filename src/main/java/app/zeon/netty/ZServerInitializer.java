@@ -8,7 +8,7 @@ import io.netty.handler.codec.http.HttpServerCodec;
 /**
  * This class is responsible for the core.netty.http channel initialization
  */
-public class HttpServerInitializer extends ChannelInitializer<SocketChannel> {
+public class ZServerInitializer extends ChannelInitializer<SocketChannel> {
 
     @Override
     protected void initChannel(SocketChannel socketChannel) throws Exception {

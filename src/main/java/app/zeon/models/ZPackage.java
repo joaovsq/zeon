@@ -1,63 +1,49 @@
 package app.zeon.models;
 
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.util.Arrays;
+import java.io.File;
+import java.util.List;
 
-/**
- *
- */
 public class ZPackage {
 
     private String description;
 
     private String title;
 
-    private byte[] signature;
+    private List<File> files;
 
-    private static final LocalDateTime createdAt = LocalDateTime.now(ZoneOffset.UTC);
-
-    public ZPackage(byte[] signature) {
-        this.signature = signature;
-    }
-
-    public ZPackage(String description, String title, byte[] signature) {
+    public ZPackage(String description, String title) {
         this.description = description;
         this.title = title;
-        this.signature = signature;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public byte[] getSignature() {
-        return signature;
+    /**
+     * @return the files
+     */
+    public List<File> getFiles() {
+        return files;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    /**
+     * @param files the files to set
+     */
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 
-    @Override
-    public String toString() {
-        return "ZPackage{" +
-                "description='" + description + '\'' +
-                ", title='" + title + '\'' +
-                ", signature=" + Arrays.toString(signature) +
-                ", createdAt=" + createdAt +
-                '}';
-    }
 }
