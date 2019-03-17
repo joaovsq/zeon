@@ -10,6 +10,8 @@ public class Zeon {
 
     public static void main(String[] args) {
         LOG.info("Zeon machine starting...");
+
+        LOG.error("Testing error logger");
     }
 
 }

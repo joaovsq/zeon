@@ -6,15 +6,8 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "start cmd /k gradle",
-            "args": [
-                "build"
-            ],
+            "command": "start cmd /k gradle build & exit",
             "group": "build",
-            "presentation": {
-                "reveal": "always",
-                "panel": "new"
-            },
             "problemMatcher": []
         },
         {
@@ -24,7 +17,8 @@
             "args": [
                 "run"
             ],
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "clean",
@@ -33,15 +27,13 @@
             "args": [
                 "clean"
             ],
-            "group": "build"
+            "group": "build",
+            "problemMatcher": []
         },
         {
             "label": "clean build",
             "type": "shell",
-            "command": "start cmd /k gradle",
-            "args": [
-                "clean build"
-            ],
+            "command": "start cmd /k gradle clean build & exit",
             "group": "build",
             "problemMatcher": []
         }

@@ -12,7 +12,6 @@ import io.netty.handler.logging.LoggingHandler;
 public class ZServer {
 
     public void run() {
-
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
@@ -37,4 +36,7 @@ public class ZServer {
         }
     }
 
+    private void setup() {
+
+    }
 }

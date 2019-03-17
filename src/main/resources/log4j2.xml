@@ -2,22 +2,24 @@
 <Configuration status="info">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%highlight{%d{yyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n}{FATAL=red, ERROR=red, WARN=yellow, INFO=white, DEBUG=green, TRACE=blue}"/>
         </Console>
         <File name="InfoLog" fileName="logs/info.log" immediateFlush="true" append="true">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
-        <File name="GeralErrorLog" fileName="logs/error.log" immediateFlush="true" append="true">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <File name="ErrorLog" fileName="logs/error.log" immediateFlush="true" append="true">
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="GeralErrorLogger" level="error">
-            <AppenderRef ref="GeralErrorLog"/>
+        <Logger name="ErrorLog" level="error">
+            <AppenderRef ref="ErrorLog" level="error"/>
+            <AppenderRef ref="Console"/>
         </Logger>
 
         <Root level="all">
             <AppenderRef ref="InfoLog" level="info"/>
+            <AppenderRef ref="ErrorLog" level="error"/>
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
