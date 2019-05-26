@@ -1,4 +1,4 @@
-package app.zeon.netty.server;
+package app.zeon.server.netty.initializers;
 
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;

@@ -1,25 +1,33 @@
 package app.zeon;
 
-import java.security.cert.CertificateException;
+import app.zeon.server.netty.ZServer;
+import app.zeon.utils.Log;
 
 import javax.net.ssl.SSLException;
-
-import app.zeon.netty.server.ZServer;
-import app.zeon.utils.Log;
-import app.zeon.utils.LogModule;
+import java.security.cert.CertificateException;
+import java.util.concurrent.CompletableFuture;
 
 // entry point
 public class Zeon {
 
-    private static final Log LOG = new Log(LogModule.MAIN);
+    private static final Log log = new Log(Zeon.class);
 
-    public static void main(String[] args) throws InterruptedException, SSLException, CertificateException {
-        LOG.info("Zeon machine starting...");
+    public static void main(String[] args) {
 
-        // if (args.length > 0 && args[0].equals("-server")) {
-        // }
+        var serverJob = CompletableFuture.runAsync(() -> {
+            try {
+                log.info("Zeon server starting...");
+                new ZServer().run(7777);
+            } catch (InterruptedException | CertificateException | SSLException e) {
+                e.printStackTrace();
+            }
+        });
 
-        new ZServer().run(7777);
+        var clientJob = CompletableFuture.runAsync(() -> {
+            log.info("Client running...");
+        });
+
+        serverJob.join();
 
     }
 

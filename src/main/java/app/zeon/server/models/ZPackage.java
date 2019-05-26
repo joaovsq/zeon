@@ -1,4 +1,4 @@
-package app.zeon.models;
+package app.zeon.server.models;
 
 import java.io.File;
 import java.util.List;

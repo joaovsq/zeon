@@ -12,6 +12,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
  * A preconfigured wrapper around Google's Tink library
+ * <p>
+ *  TODO: This class is using a temporary generated key to encrypt the data, we should save the key somewhere, otherwise this will be a problem later
  */
 public class TinkEncrypt implements Encrypt {
 

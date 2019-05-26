@@ -1,4 +1,4 @@
-package app.zeon.models;
+package app.zeon.server.models;
 
 public class Witness {
 

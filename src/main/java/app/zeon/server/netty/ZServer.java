@@ -1,9 +1,10 @@
-package app.zeon.netty.server;
+package app.zeon.server.netty;
 
 import java.security.cert.CertificateException;
 
 import javax.net.ssl.SSLException;
 
+import app.zeon.server.netty.initializers.ZServerInitializer;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.LoggerContext;
 

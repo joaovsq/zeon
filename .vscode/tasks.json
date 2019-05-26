@@ -6,7 +6,7 @@
         {
             "label": "build",
             "type": "shell",
-            "command": "start cmd /k gradle build & exit",
+            "command": "start cmd /k gradle build",
             "group": "build",
             "problemMatcher": []
         },
